@@ -1,0 +1,30 @@
+package com.careerai.controller;
+
+import com.careerai.model.Student;
+import com.careerai.repository.StudentRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/students")
+@CrossOrigin(origins = "*")
+public class StudentController {
+
+    private final StudentRepository studentRepository;
+                .map(student -> {
+
+                    return ResponseEntity.ok(student);
+
+                })
+                .orElse(
+
+                        ResponseEntity
+                                .status(401)
+                                .body(
+                                        "Invalid email or password"
+                                )
+
+                );
+    }
+
+}
